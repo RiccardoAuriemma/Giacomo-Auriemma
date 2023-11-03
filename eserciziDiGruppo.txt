@@ -1,0 +1,169 @@
+PARTE 1
+ 
+// C++ code
+//
+ 
+int i = 0;
+ 
+void setup()
+{
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+}
+ 
+void loop()
+{
+  for(i = 0; i < 255; i++)
+  {
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    analogWrite(5, i);
+    delay(10);
+  }
+  /*if (distanza < 10){
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(2, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(7, LOW);
+    delay(300);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, LOW);
+    digitalWrite(2, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, LOW);
+  ruotare:   digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(2, HIGH);
+    digitalWrite(6, LOW);
+    digitalWrite(7, HIGH); 
+    delay(1000); 
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(2, HIGH);
+    digitalWrite(6, LOW);
+    digitalWrite(7, HIGH);
+    delay(550);
+  }
+ 
+if (distanza > 9){
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    digitalWrite(5, HIGH);
+    digitalWrite(2, HIGH);
+    digitalWrite(6, LOW);
+    digitalWrite(7, HIGH);
+}*/
+
+  delay(100);
+  i = 0;
+}
+ 
+------------------------------------------------------------------------------------
+ 
+PARTE 2
+ 
+// C++ code
+//
+ 
+int i = 0;
+int j = 0;
+ 
+void setup()
+{
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+}
+ 
+void loop()
+{
+  for(i = 0; i < 255; i++)
+  {
+    j = random(0, 255);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    analogWrite(5, j);
+    delay(10);
+  }
+  delay(100);
+  i = 0;
+}
+ 
+------------------------------------------------------------------------------------
+ 
+PARTE 3
+ 
+// C++ code
+//
+ 
+int i = 0;
+int j = 0;
+int n = 0;
+ 
+void setup()
+{
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+}
+ 
+void loop()
+{
+    n = analogRead(A0);
+  	n = map(n, 0, 1023, 0, 255);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    analogWrite(5, n);
+    delay(10);
+}
+ 
+------------------------------------------------------------------------------------
+ 
+PARTE 4
+ 
+// C++ code
+//
+ 
+int i = 0;
+int j = 0;
+int n = -1;
+bool accettabile = false;
+ 
+void setup()
+{
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+  Serial.print("inserisci valore per motore da 0 a 255: ");
+ 
+  do
+  {
+    if (Serial.available() > 0) 
+    {
+    	n = Serial.parseInt();
+    }
+    if(n > 255 || n < 0)
+      accettabile = false;
+    else
+      accettabile = true;
+  } while(accettabile == false);
+ 
+}
+ 
+void loop()
+{
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    analogWrite(5, n);
+    delay(10);
+}
